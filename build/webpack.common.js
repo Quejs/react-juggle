@@ -1,6 +1,7 @@
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: {
@@ -11,10 +12,47 @@ module.exports = {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/'
     },
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    // 'postcss-loader',
+                    // 'sass-loader'
+                ]
+            },
+            {
+                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000
+                }
+            },
+            {
+              test: /\.js$/,
+              exclude: /(node_modules|bower_components)/,
+              use: {
+                loader: 'babel-loader',
+                options: {
+                  presets: ['@babel/preset-env', '@babel/preset-react'],
+                //   plugins: ['react-hot-loader/babel'],
+                }
+              }
+            }
+          ]
+    },
     plugins: [
-        new CleanWebpackPlugin(['dist'], { root: path.resolve(__dirname , '..') }),
         new HtmlWebpackPlugin({
-            title: 'Development'
+            template: 'src/index.html'
+        }),
+        new webpack.DefinePlugin({
+            'test': 123123123
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].[hash].css',
+            chunkFilename: '[id].[hash].css',
         })
     ]
 };
