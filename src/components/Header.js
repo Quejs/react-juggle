@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.css'
+import Img from './Body'
 
 export default class extends React.PureComponent {
     constructor(props) {
@@ -16,7 +17,10 @@ export default class extends React.PureComponent {
     render() {
         const { message } = this.state
 		return (
-            <h2>{ message }</h2>
+            <div>
+                <h2>{ message }</h2>
+                <Img />
+            </div>
 		)
 	}
 }

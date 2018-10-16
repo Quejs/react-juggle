@@ -40,6 +40,20 @@ module.exports = {
                 //   plugins: ['react-hot-loader/babel'],
                 }
               }
+            },
+            {
+                test: /\.md$/,
+                use: [
+                    {
+                        loader: "html-loader"
+                    },
+                    {
+                        loader: "markdown-loader",
+                        options: {
+                            pedantic: true,
+                        }
+                    }
+                ]
             }
           ]
     },
