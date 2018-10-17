@@ -45,14 +45,8 @@ module.exports = {
                 test: /\.md$/,
                 use: [
                     {
-                        loader: "html-loader"
+                        loader: 'file-loader'
                     },
-                    {
-                        loader: "markdown-loader",
-                        options: {
-                            pedantic: true,
-                        }
-                    }
                 ]
             }
           ]

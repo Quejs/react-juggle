@@ -1,30 +1,42 @@
 import React from 'react';
-// import showdown from 'showdown'
-import image from './myself.jpg'
+import showdown from 'showdown'
+import image from './image.jpg'
 import changelog from './CHANGELOG.md'
-
-console.log('changelog: ', changelog);
-console.log('image: ', image);
-
-// const converter = new showdown.Converter()
-// const text = '# hello, markdown!'
-// const html = converter.makeHtml(text)
 
 export default class extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
+            html: '',
         };
     }
     
-	componentDidMount() {}
+	componentDidMount() {
+        this.getMarkdownFile()
+    }
 
     componentWillUnmount() {}
+
+    getMarkdownFile() {
+        fetch(changelog).then(res => {
+            return res.text()
+        }).then(data => {
+			const converter = new showdown.Converter()
+
+			/* eslint-disable react/no-danger */
+			const html = <div dangerouslySetInnerHTML={{ __html: converter.makeHtml(data) }} />
+
+			this.setState({ html })
+        }).catch(err => {
+            console.log('err: ', err);
+        })
+    }
     
     render() {
+        const {html} = this.state
 		return <>
-            <img width={100} height={100} src={image}></img>
-            <div dangerouslySetInnerHTML={{ __html: changelog }}></div>
+            <img width={200} height={100} src={image}></img>
+            {html}
         </>
 	}
 }
