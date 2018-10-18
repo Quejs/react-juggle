@@ -1,6 +1,6 @@
-import React from 'react';
-import './styles.css'
-import Img from './Body'
+import React from "react";
+import "./styles.css";
+import Img from "./Body";
 
 export default class extends React.PureComponent {
     constructor(props) {
@@ -9,18 +9,18 @@ export default class extends React.PureComponent {
             message: `我来自遥远的国度`
         };
     }
-    
-	componentDidMount() {}
 
-    componentWillUnmount() {}
-    
+    componentDidMount() { }
+
+    componentWillUnmount() { }
+
     render() {
-        const { message } = this.state
-		return (
+        const { message } = this.state;
+        return (
             <div>
-                <h2>{ message }</h2>
+                <h2>{message}</h2>
                 <Img />
             </div>
-		)
-	}
+        );
+    }
 }

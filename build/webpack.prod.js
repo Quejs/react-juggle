@@ -7,7 +7,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = merge(common, {
     mode: 'production',
     plugins: [
-        new CleanWebpackPlugin(['dist'], { root: path.resolve(__dirname , '..') }),
+        new CleanWebpackPlugin(['dist'], { root: path.resolve(__dirname, '..') }),
         new UglifyJSPlugin()
     ]
 });

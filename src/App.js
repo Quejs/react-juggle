@@ -1,6 +1,6 @@
-import React from 'react';
-import './style.css'
-import Component from './components/Header'
+import React from "react";
+import "./style.css";
+import Component from "./components/Header";
 
 export default class extends React.PureComponent {
     constructor(props) {
@@ -9,20 +9,20 @@ export default class extends React.PureComponent {
             message: `Hi, I'm John Smile`
         };
     }
-    
-	componentDidMount() {
-        console.log('test: ', test);
+
+    componentDidMount() {
+        console.log("test: ", test);
     }
 
-    componentWillUnmount() {}
-    
+    componentWillUnmount() { }
+
     render() {
-        const { message } = this.state
-		return (
+        const { message } = this.state;
+        return (
             <>
-                <h1>{ message }</h1>
-                <Component></Component>
+                <h1>{message}</h1>
+                <Component />
             </>
-		)
-	}
+        );
+    }
 }
