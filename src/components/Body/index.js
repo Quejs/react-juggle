@@ -15,7 +15,7 @@ export default class extends React.PureComponent {
         this.getMarkdownFile()
     }
 
-    componentWillUnmount() { }
+    componentWillUnmount() {}
 
     getMarkdownFile() {
         fetch(changelog)
@@ -27,7 +27,11 @@ export default class extends React.PureComponent {
 
                 /* eslint-disable react/no-danger */
                 const html = (
-                    <div dangerouslySetInnerHTML={{ __html: converter.makeHtml(data) }} />
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: converter.makeHtml(data)
+                        }}
+                    />
                 )
 
                 this.setState({ html })
