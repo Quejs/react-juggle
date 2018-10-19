@@ -48,12 +48,12 @@
         }
     },
     "lint-staged": {
-        "*.js": [
-            "eslint --fix",
+        "*/*.{js,jsx,less}": [
+            "prettier-eslint --write",
             "git add"
         ],
         "ignore": [
-            "**/dist/*.min.js"
+            "**/dist/*.bundle.js"
         ]
     },
     "engines": {
