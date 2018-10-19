@@ -1,6 +1,6 @@
 {
     "git.ignoreLimitWarning": true,
     "editor.formatOnSave": true,
-    "editor.detectIndentation": false,
-    "editor.tabSize": 4,
+    // "editor.detectIndentation": false,
+    // "editor.tabSize": 4,
 }

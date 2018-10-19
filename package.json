@@ -1,6 +1,6 @@
 {
     "name": "react-juggle",
-    "version": "1.0.0.9",
+    "version": "1.0.0",
     "main": "index.js",
     "repository": "https://github.com/dalaoque/react-juggle.git",
     "author": "410009509@qq.com",
@@ -21,6 +21,7 @@
         "markdown-loader": "^4.0.0",
         "marked": "^0.5.1",
         "mini-css-extract-plugin": "^0.4.3",
+        "prettier": "^1.14.3",
         "raw-loader": "^0.5.1",
         "react": "^16.5.2",
         "react-dev-utils": "^5.0.2",
@@ -47,9 +48,12 @@
         }
     },
     "lint-staged": {
-        "**/*.{js,jsx,less}": [
-            "eslint --fix",
+        "*/*.{js,jsx,less}": [
+            "prettier --write",
             "git add"
+        ],
+        "ignore": [
+            "**/dist/*.min.js"
         ]
     },
     "engines": {

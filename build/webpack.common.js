@@ -1,7 +1,7 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     entry: {
@@ -18,7 +18,7 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    'css-loader'
                     // 'postcss-loader',
                     // 'sass-loader'
                 ]
@@ -36,8 +36,8 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react'],
-                        //   plugins: ['react-hot-loader/babel'],
+                        presets: ['@babel/preset-env', '@babel/preset-react']
+                        // plugins: ['react-hot-loader/babel']
                     }
                 }
             },
@@ -46,7 +46,7 @@ module.exports = {
                 use: [
                     {
                         loader: 'file-loader'
-                    },
+                    }
                 ]
             }
         ]
@@ -56,11 +56,11 @@ module.exports = {
             template: 'src/index.html'
         }),
         new webpack.DefinePlugin({
-            'test': 123123123
+            test: 123123123
         }),
         new MiniCssExtractPlugin({
             filename: '[name].[hash].css',
-            chunkFilename: '[id].[hash].css',
+            chunkFilename: '[id].[hash].css'
         })
     ]
-};
+}

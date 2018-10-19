@@ -1,26 +1,26 @@
-import React from "react";
-import "./styles.css";
-import Img from "./Body";
+import React from 'react'
+import './styles.css'
+import Img from './Body/index'
 
 export default class extends React.PureComponent {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
-            message: `我来自遥远的国度`
-        };
+            message: '我来自遥远的国度'
+        }
     }
 
-    componentDidMount() { }
+    componentDidMount() {}
 
-    componentWillUnmount() { }
+    componentWillUnmount() {}
 
     render() {
-        const { message } = this.state;
+        const { message } = this.state
         return (
             <div>
                 <h2>{message}</h2>
                 <Img />
             </div>
-        );
+        )
     }
 }
