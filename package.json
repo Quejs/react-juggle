@@ -49,7 +49,7 @@
     },
     "lint-staged": {
         "*/*.{js,jsx,less}": [
-            "prettier --write",
+            "eslint --fix",
             "git add"
         ],
         "ignore": [
