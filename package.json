@@ -51,9 +51,6 @@
         "*/*.{js,jsx,less}": [
             "prettier-eslint --write",
             "git add"
-        ],
-        "ignore": [
-            "**/dist/*.bundle.js"
         ]
     },
     "engines": {
