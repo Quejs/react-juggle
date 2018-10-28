@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+const devMode = process.env.NODE_ENV === 'development'
+
 module.exports = {
     entry: {
         app: './src/index.js'
@@ -17,9 +19,12 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader'
-                    // 'postcss-loader',
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    // {
+                    //     loader: 'style-loader'
+                    // },
+                    'css-loader',
+                    'postcss-loader'
                     // 'sass-loader'
                 ]
             },
