@@ -1,3 +1,7 @@
-# 基于React的脚手架
+# 基于 React 的脚手架
 
-- Webpack
+-   Webpack
+
+-   ESLint
+
+-   Prettier & husky
