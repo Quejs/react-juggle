@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.css'
-import Component from './components/Header'
+import Component from 'src/components/Header'
 
 export default class extends React.PureComponent {
     constructor(props) {

@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { alias, define } = require('../webpackrc')
 
 const devMode = process.env.NODE_ENV === 'development'
 
@@ -11,7 +12,7 @@ module.exports = {
     },
     output: {
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, '../dist'),
+        path: path.resolve(__dirname, '../../dist'),
         publicPath: '/'
     },
     module: {
@@ -56,12 +57,19 @@ module.exports = {
             }
         ]
     },
+    resolve: {
+        alias: {
+            ...alias
+            // root: path.resolve(__dirname, '../../')
+        }
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         }),
         new webpack.DefinePlugin({
-            test: 123123123
+            ...define
+            // port: process.env.port || 3000
         }),
         new MiniCssExtractPlugin({
             filename: '[name].[hash].css',
