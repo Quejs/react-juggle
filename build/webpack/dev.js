@@ -3,7 +3,7 @@ const common = require('./common.js')
 const webpack = require('webpack')
 const openBrowser = require('react-dev-utils/openBrowser')
 const packageConfig = require('../../package.json')
-const { proxy } = require('../webpackrc')
+const { proxy = {} } = require('../webpackrc')
 require('colors')
 
 module.exports = merge(common, {
