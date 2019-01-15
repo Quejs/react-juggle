@@ -2,12 +2,10 @@ const merge = require('webpack-merge')
 const common = require('./common.js')
 const webpack = require('webpack')
 const openBrowser = require('react-dev-utils/openBrowser')
+// const path = require('path')
+
 const packageConfig = require('../../package.json')
-<<<<<<< HEAD:build/webpack/dev.js
 const { proxy = {} } = require('../webpackrc')
-=======
-const { proxy } = require('../webpackrc')
->>>>>>> origin/master:build/webpack/dev.js
 require('colors')
 
 module.exports = merge(common, {
