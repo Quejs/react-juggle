@@ -2,6 +2,8 @@ const merge = require('webpack-merge')
 const common = require('./common.js')
 const webpack = require('webpack')
 const openBrowser = require('react-dev-utils/openBrowser')
+// const path = require('path')
+
 const packageConfig = require('../../package.json')
 const { proxy = {} } = require('../webpackrc')
 require('colors')
