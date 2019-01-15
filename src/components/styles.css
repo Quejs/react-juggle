@@ -1,8 +1,0 @@
-:root {
-    --mainColor: blue;
-}
-
-.title {
-    color: var(--mainColor);
-    transform: translate(0, 0);
-}

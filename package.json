@@ -8,7 +8,7 @@
     "scripts": {
         "start": "npm run development",
         "build": "cross-env NODE_ENV=production webpack --config build/webpack/prod.js",
-        "development": "cross-env NODE_ENV=development && npm run develop-server",
+        "development": "cross-env NODE_ENV=development npm run develop-server",
         "develop-server": "webpack-dev-server --config build/webpack/dev.js"
     },
     "dependencies": {
@@ -22,6 +22,8 @@
         "file-loader": "^2.0.0",
         "html-loader": "^0.5.5",
         "husky": "^1.1.2",
+        "less": "^3.9.0",
+        "less-loader": "^4.1.0",
         "lint-staged": "^7.3.0",
         "markdown-loader": "^4.0.0",
         "marked": "^0.5.1",
