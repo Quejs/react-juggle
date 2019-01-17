@@ -9,7 +9,8 @@
         "start": "npm run development",
         "build": "cross-env NODE_ENV=production webpack --config build/webpack/prod.js",
         "development": "cross-env NODE_ENV=development npm run develop-server",
-        "develop-server": "webpack-dev-server --config build/webpack/dev.js"
+        "develop-server": "node build/webpack/dev.js",
+        "develop-server.old": "webpack-dev-server --progress --config build/webpack/dev.js"
     },
     "dependencies": {
         "autoprefixer": "^9.3.1",
