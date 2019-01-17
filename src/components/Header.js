@@ -1,8 +1,6 @@
 import React from 'react'
-import styles from './styles.css'
+import styles from './styles.less'
 import Img from './Body/index'
-
-console.log('styles: ', styles)
 
 export default class extends React.PureComponent {
     constructor(props) {
@@ -20,7 +18,7 @@ export default class extends React.PureComponent {
         const { message } = this.state
         return (
             <div>
-                <h2 className="title">{message}</h2>
+                <h2 className={styles.title}>{message}</h2>
                 <Img />
             </div>
         )

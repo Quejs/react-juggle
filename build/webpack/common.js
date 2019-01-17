@@ -21,12 +21,16 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    // {
-                    //     loader: 'style-loader'
-                    // },
-                    'css-loader',
+                    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
                     'postcss-loader'
-                    // 'sass-loader'
+                ]
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+                    'less-loader'
                 ]
             },
             {
