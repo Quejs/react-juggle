@@ -11,6 +11,10 @@ module.exports = {
         nova_root: process.env.nova_root || '',
         nova_uri: process.env.nova_uri || ''
     },
+    devServer: {
+        host: process.env.host || 'localhost',
+        port: process.env.port || 3000 // 端口
+    },
     proxy: {
         '/site_api/v1': {
             target:

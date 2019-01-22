@@ -2,13 +2,14 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 const { alias = {}, define = {} } = require('../webpackrc')
 
 const devMode = process.env.NODE_ENV === 'development'
 
 module.exports = {
     entry: {
-        app: './src/index.js'
+        app: './src/index.tsx'
     },
     output: {
         filename: '[name].bundle.js',
@@ -30,7 +31,23 @@ module.exports = {
                 use: [
                     devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+                    'postcss-loader',
                     'less-loader'
+                    // {
+                    //     loader: 'typings-for-css-modules-loader',
+                    //     options: {
+                    //         modules: true,
+                    //         namedExport: true
+                    //     }
+                    // }
+                    // {
+                    //     loader: 'typings-for-css-modules-loader',
+                    //     options: {
+                    //         modules: true,
+                    //         namedExport: true,
+                    //         camelCase: true
+                    //     }
+                    // }
                 ]
             },
             {
@@ -40,31 +57,47 @@ module.exports = {
                     limit: 10000
                 }
             },
-            // {
-            //     test: /\.(t|j)sx?$/,
-            //     exclude: /(node_modules|bower_components)/,
-            //     use: {
-            //         loader: 'babel-loader',
-            //         options: {
-            //             presets: ['@babel/preset-env', '@babel/preset-react']
-            //             // plugins: ['react-hot-loader/babel']
-            //         }
-            //     }
-            // },
-
-            // {
-            //     // test: /\.tsx?$/,
-            //     test: /\.(t|j)sx?$/,
-            //     use: 'ts-loader',
-            //     exclude: /node_modules/
-            // },
+            {
+                test: /\.jsx?$/,
+                exclude: /(node_modules|bower_components)/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                '@babel/preset-env',
+                                '@babel/preset-react'
+                            ]
+                            // plugins: ['react-hot-loader/babel']
+                        }
+                    }
+                ]
+            },
 
             {
-                test: /\.(t|j)sx?$/,
-                use: { loader: 'awesome-typescript-loader' }
+                test: /\.tsx?$/,
+                use: {
+                    loader: 'ts-loader',
+                    options: { transpileOnly: true }
+                },
+                exclude: /(node_modules|bower_components)/
             },
+
+            // {
+            //     test: /\.tsx?$/,
+            //     use: {
+            //         loader: 'awesome-typescript-loader'
+            //     },
+            //     exclude: /(node_modules|bower_components)/
+            // },
+
             // addition - add source-map support
-            { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
+            // {
+            //     enforce: 'pre',
+            //     test: /\.(j|t)sx?$/,
+            //     loader: 'source-map-loader'
+            // },
+
             {
                 test: /\.md$/,
                 use: [
@@ -78,7 +111,6 @@ module.exports = {
     resolve: {
         alias: {
             ...alias
-            // root: path.resolve(__dirname, '../../')
         },
         extensions: ['.js', '.json', '.md', '.jsx', '.ts', '.tsx']
     },
@@ -88,11 +120,11 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             ...define
-            // port: process.env.port || 3000
         }),
         new MiniCssExtractPlugin({
             filename: '[name].[hash].css',
             chunkFilename: '[id].[hash].css'
-        })
+        }),
+        new webpack.ProgressPlugin()
     ]
 }

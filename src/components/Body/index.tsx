@@ -1,11 +1,18 @@
-import React from 'react'
+import * as React from 'react'
 import showdown from 'showdown'
 import image from './image.jpg'
 import changelog from './CHANGELOG.md'
 
+interface State {
+    html: string
+}
+
 export default class extends React.PureComponent {
-    constructor(props) {
+    state: State
+
+    constructor(props: any) {
         super(props)
+
         this.state = {
             html: ''
         }
