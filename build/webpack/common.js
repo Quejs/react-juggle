@@ -40,17 +40,31 @@ module.exports = {
                     limit: 10000
                 }
             },
+            // {
+            //     test: /\.(t|j)sx?$/,
+            //     exclude: /(node_modules|bower_components)/,
+            //     use: {
+            //         loader: 'babel-loader',
+            //         options: {
+            //             presets: ['@babel/preset-env', '@babel/preset-react']
+            //             // plugins: ['react-hot-loader/babel']
+            //         }
+            //     }
+            // },
+
+            // {
+            //     // test: /\.tsx?$/,
+            //     test: /\.(t|j)sx?$/,
+            //     use: 'ts-loader',
+            //     exclude: /node_modules/
+            // },
+
             {
-                test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react']
-                        // plugins: ['react-hot-loader/babel']
-                    }
-                }
+                test: /\.(t|j)sx?$/,
+                use: { loader: 'awesome-typescript-loader' }
             },
+            // addition - add source-map support
+            { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
             {
                 test: /\.md$/,
                 use: [
@@ -65,7 +79,8 @@ module.exports = {
         alias: {
             ...alias
             // root: path.resolve(__dirname, '../../')
-        }
+        },
+        extensions: ['.js', '.json', '.md', '.jsx', '.ts', '.tsx']
     },
     plugins: [
         new HtmlWebpackPlugin({
