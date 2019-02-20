@@ -1,4 +1,5 @@
 {
+    "parser": "babel-eslint",
     "env": {
         "browser": true,
         "commonjs": true,
@@ -20,6 +21,8 @@
         "quotes": ["error", "single"],
         "semi": ["error", "never"],
         "no-console": "off",
-        "react/display-name": 0
+        "react/display-name": 0,
+        "react/prop-types": [0],
+        "react/no-children-prop": 0
     }
 }
